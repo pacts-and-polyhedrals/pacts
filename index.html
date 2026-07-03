@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacts & Polyhedrals | Games, Foundry VTT Tools & Professional DM Services</title>
+  <meta name="description" content="Pacts & Polyhedrals by DM Asmo — Wyvern Chess, DM LM Pro, Downtime Master, premium online D&D games, Foundry VTT builds, custom adventures, and TTRPG support." />
+  <meta name="keywords" content="Pacts and Polyhedrals, DM Asmo, Wyvern Chess, DM LM Pro, Downtime Master, Foundry VTT modules, professional dungeon master, paid D&D games, Dungeons and Dragons, Dracouroboros" />
+  <meta name="author" content="Pacts & Polyhedrals / Dracouroboros" />
+  <meta property="og:title" content="Pacts & Polyhedrals | Games & Foundry VTT Tools" />
+  <meta property="og:description" content="Home of Wyvern Chess, DM LM Pro, Downtime Master, professional online D&D games, Foundry VTT builds, and TTRPG content by DM Asmo." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#d21f3c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --void:#070609;
+      --obsidian:#0f0c12;
+      --ember:#d21f3c;
+      --ember2:#ff4a5f;
+      --gold:#d9a441;
+      --gold2:#f3d88b;
+      --bone:#f5efe4;
+      --muted:#c6b7a2;
+      --dim:#817467;
+      --card:rgba(255,255,255,.065);
+      --card2:rgba(255,255,255,.095);
+      --line:rgba(255,255,255,.14);
+      --shadow:0 35px 95px rgba(0,0,0,.65);
+      --radius:28px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--bone);
+      background:
+        radial-gradient(circle at 12% 2%, rgba(210,31,60,.32), transparent 32%),
+        radial-gradient(circle at 84% 8%, rgba(217,164,65,.17), transparent 26%),
+        radial-gradient(circle at 50% 105%, rgba(210,31,60,.16), transparent 36%),
+        linear-gradient(180deg,#070609 0%,#0d0a10 42%,#070609 100%);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";
+      position:fixed;inset:0;pointer-events:none;z-index:-1;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:72px 72px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.65),transparent 85%);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(7,6,9,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:14px;font-weight:900;letter-spacing:.02em}
+    .sigil{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--ember),#5b0716 52%,var(--gold));box-shadow:0 12px 35px rgba(210,31,60,.28);border:1px solid rgba(255,255,255,.22)}
+    .sigil span{font-family:Cinzel,serif;font-size:23px;line-height:1;color:white;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+    .brand small{display:block;color:var(--muted);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-top:2px}
+    .links{display:flex;align-items:center;gap:18px;color:var(--muted);font-weight:700;font-size:14px}
+    .links a:hover{color:var(--gold2)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid rgba(255,255,255,.16);padding:14px 18px;border-radius:999px;font-weight:900;transition:.22s ease;box-shadow:0 15px 45px rgba(0,0,0,.22);font:inherit;cursor:pointer}
+    .btn:hover{transform:translateY(-2px);border-color:rgba(243,216,139,.55)}
+    .btn.primary{background:linear-gradient(135deg,var(--ember),#8f1026);color:white;border-color:rgba(255,255,255,.19)}
+    .btn.gold{background:linear-gradient(135deg,var(--gold),#8c5c11);color:#160d05;border-color:rgba(255,255,255,.2)}
+    .btn.ghost{background:rgba(255,255,255,.06);color:var(--bone)}
+    .hero{position:relative;padding:94px 0 72px}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:42px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:9px 13px;border:1px solid rgba(217,164,65,.28);border-radius:999px;background:rgba(217,164,65,.08);color:var(--gold2);font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.12em}
+    h1,h2,h3{font-family:Cinzel,serif;margin:0;color:var(--bone)}
+    h1{font-size:clamp(42px,7vw,82px);line-height:.92;letter-spacing:-.055em;margin-top:22px;text-wrap:balance}
+    .accent{color:var(--gold2);text-shadow:0 0 34px rgba(217,164,65,.18)}
+    .lead{font-size:clamp(17px,2.2vw,22px);line-height:1.65;color:var(--muted);max-width:710px;margin:24px 0 0}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+    .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px;max-width:720px}
+    .trust div{border:1px solid var(--line);border-radius:18px;padding:15px;background:rgba(255,255,255,.045)}
+    .trust strong{display:block;font-size:21px;color:var(--gold2)}
+    .trust span{display:block;color:var(--muted);font-size:13px;margin-top:4px;font-weight:700}
+    .hero-card{position:relative;border:1px solid rgba(255,255,255,.16);border-radius:36px;background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.035));box-shadow:var(--shadow);padding:26px;overflow:hidden}
+    .hero-card:before{content:"";position:absolute;inset:-2px;background:radial-gradient(circle at 70% 10%,rgba(255,74,95,.32),transparent 28%),radial-gradient(circle at 18% 92%,rgba(217,164,65,.22),transparent 30%);pointer-events:none}
+    .card-inner{position:relative;display:grid;gap:16px}
+    .feature{padding:18px;border:1px solid rgba(255,255,255,.13);background:rgba(5,4,7,.48);border-radius:22px}
+    .feature b{display:block;font-family:Cinzel,serif;font-size:19px;margin-bottom:8px;color:var(--gold2)}
+    .feature p{margin:0;color:var(--muted);line-height:1.55}
+    .section{padding:78px 0}
+    .section-head{display:flex;justify-content:space-between;gap:28px;align-items:end;margin-bottom:30px}
+    h2{font-size:clamp(32px,4.5vw,54px);letter-spacing:-.035em;line-height:1}
+    .section-head p{max-width:560px;color:var(--muted);line-height:1.7;margin:0}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .service,.price,.process,.testimonial,.contact-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));border-radius:var(--radius);padding:24px;box-shadow:0 20px 55px rgba(0,0,0,.28)}
+    .service:hover,.price:hover{transform:translateY(-3px);border-color:rgba(217,164,65,.4);transition:.22s ease}
+    .icon{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:rgba(210,31,60,.18);border:1px solid rgba(255,255,255,.16);font-size:23px;margin-bottom:17px}
+    .service h3,.price h3,.process h3{font-size:24px;margin-bottom:10px}
+    .service p,.price p,.process p,.testimonial p,.contact-card p{color:var(--muted);line-height:1.7;margin:0}
+    .list{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px;color:var(--muted)}
+    .list li{display:flex;gap:10px;align-items:flex-start;overflow-wrap:anywhere}
+    .list li:before{content:"✦";color:var(--gold2);flex:0 0 auto}
+    .band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(210,31,60,.15),rgba(217,164,65,.08),rgba(210,31,60,.12));padding:28px 0;color:var(--gold2);font-family:Cinzel,serif;font-weight:900;letter-spacing:.08em;text-align:center;text-transform:uppercase}
+    .price{position:relative;overflow:hidden}
+    .price.popular{border-color:rgba(217,164,65,.48);background:linear-gradient(180deg,rgba(217,164,65,.13),rgba(255,255,255,.04))}
+    .badge{position:absolute;top:18px;right:18px;background:rgba(217,164,65,.16);border:1px solid rgba(217,164,65,.38);color:var(--gold2);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+    .amount{font-size:42px;font-weight:950;margin:16px 0 8px;color:var(--bone)}
+    .amount span{font-size:15px;color:var(--muted);font-weight:800}
+    .process{display:flex;gap:16px}
+    .num{flex:0 0 auto;width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--ember),#7e1022);display:grid;place-items:center;font-weight:950}
+    .cta{border:1px solid rgba(217,164,65,.33);border-radius:38px;padding:42px;background:radial-gradient(circle at 78% 20%,rgba(217,164,65,.18),transparent 30%),linear-gradient(135deg,rgba(210,31,60,.18),rgba(255,255,255,.045));box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+    .cta p{color:var(--muted);line-height:1.7;margin:12px 0 0;max-width:780px}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+    .email-link{font-size:clamp(21px,3vw,34px);font-weight:950;color:var(--gold2);word-break:break-word;margin:16px 0;display:block}
+    footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);background:rgba(0,0,0,.22)}
+    .foot{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+    .foot-links{display:flex;gap:14px;flex-wrap:wrap;font-weight:800}
+    .foot-links a:hover{color:var(--gold2)}
+
+    .contact-form{display:grid;gap:12px;margin-top:22px}
+    .contact-form label{font-weight:900;color:var(--gold2);font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+    .contact-form input,.contact-form select,.contact-form textarea{width:100%;border:1px solid rgba(255,255,255,.16);border-radius:16px;background:rgba(5,4,7,.62);color:var(--bone);padding:14px 15px;font:inherit;outline:none}
+    .contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:rgba(217,164,65,.62);box-shadow:0 0 0 4px rgba(217,164,65,.08)}
+    .contact-form textarea{resize:vertical;min-height:150px}
+    .contact-form button{width:max-content;margin-top:6px}
+    .form-card{grid-row:span 2}
+    .form-note{font-size:12px!important;color:var(--dim)!important;margin-top:2px!important}
+
+    .brand-logo{width:52px;height:52px;border-radius:16px;object-fit:cover;box-shadow:0 12px 35px rgba(210,31,60,.28);border:1px solid rgba(255,255,255,.22);background:#080608}
+    .hero-logo{width:min(100%,420px);display:block;margin:0 auto 20px;border-radius:28px;border:1px solid rgba(255,255,255,.12);box-shadow:0 22px 70px rgba(0,0,0,.42)}
+    .art-break{padding:38px 0 0}.art-wide{width:100%;max-height:430px;object-fit:cover;border-radius:34px;border:1px solid rgba(255,255,255,.14);box-shadow:var(--shadow);display:block}.art-card{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));padding:16px;box-shadow:0 20px 55px rgba(0,0,0,.28)}.art-card img{width:100%;display:block;border-radius:22px}.split-feature{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:center}.price{padding-top:62px}.badge{z-index:2;max-width:calc(100% - 36px);white-space:nowrap}.price h3{padding-right:0}.service,.price,.process,.testimonial,.contact-card{overflow:hidden}
+    .pkg-grid{gap:20px}
+    .pkg{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:rgba(5,4,7,.35);box-shadow:0 20px 55px rgba(0,0,0,.28);display:flex;flex-direction:column}
+    .pkg-img{width:100%;height:auto;display:block;border-bottom:1px solid var(--line)}
+    .pkg-actions{display:flex;flex-wrap:wrap;gap:10px;padding:18px;margin-top:auto}
+    .pkg:hover{border-color:rgba(217,164,65,.4);transition:.22s ease}
+    .modal-overlay{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.72);backdrop-filter:blur(12px)}
+    .modal-overlay.open{display:flex}
+    .readme-modal{width:min(940px,100%);max-height:min(88vh,920px);overflow:hidden;border:1px solid rgba(217,164,65,.34);border-radius:28px;background:linear-gradient(180deg,rgba(20,15,18,.98),rgba(7,6,9,.98));box-shadow:var(--shadow)}
+    .modal-top{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.045)}
+    .modal-top strong{font-family:Cinzel,serif;color:var(--gold2);font-size:22px}
+    .modal-close{width:42px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);color:var(--bone);font-size:24px;line-height:1;cursor:pointer}
+    .modal-body{max-height:calc(min(88vh,920px) - 79px);overflow:auto;padding:28px;color:var(--muted);line-height:1.65}
+    .readme h2,.readme h3{letter-spacing:0}
+    .readme h2{font-size:clamp(30px,4vw,48px);margin-bottom:8px}
+    .readme h3{font-size:24px;margin:28px 0 10px;color:var(--gold2)}
+    .readme h4{margin:22px 0 8px;color:var(--bone);font-size:16px}
+    .readme p{margin:10px 0}
+    .readme ul{margin:10px 0 0;padding-left:22px}
+    .readme li{margin:7px 0;overflow-wrap:anywhere}
+    .readme code,.manifest{display:block;margin:12px 0;padding:13px 14px;border:1px solid rgba(217,164,65,.24);border-radius:14px;background:rgba(0,0,0,.28);color:var(--gold2);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;white-space:normal;overflow-wrap:anywhere}
+    .readme-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    @media(max-width:920px){.hero-grid,.grid3,.grid2,.contact,.cta,.split-feature{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:14px}.links{display:none}.trust{grid-template-columns:1fr}.hero{padding-top:64px}.cta{padding:28px}.nav-inner{height:70px}}
+    @media(max-width:560px){.wrap{width:min(100% - 24px,var(--max))}.hero-actions .btn,.cta .btn{width:100%}.brand strong{font-size:15px}.sigil{width:40px;height:40px}.service,.price,.process,.testimonial,.contact-card{padding:20px}h1{font-size:42px}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Pacts and Polyhedrals home">
+        <img class="brand-logo" src="assets/1000172908.png" alt="Pacts & Polyhedrals sigil">
+        <div><strong>Pacts & Polyhedrals</strong><small>by Dracouroboros</small></div>
+      </a>
+      <div class="links" aria-label="Main navigation">
+        <a href="#products">Products</a>
+        <a href="#services">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="about.html">About</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn primary" href="#contact" data-service="General Enquiry">Start a Project</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Fantasy Games · Foundry VTT Tools · Campaign Craft</div>
+          <h1>Turn your next session into a <span class="accent">legend.</span></h1>
+          <p class="lead">Pacts & Polyhedrals creates original fantasy games, GM-ready Foundry VTT modules, professional online D&D experiences, custom Foundry builds, and cinematic campaign support for players, GMs, creators, and communities.</p>
+          <div class="hero-actions">
+            <a class="btn gold" href="https://startplaying.games/gm/dmasmo" target="_blank" rel="noopener">Book a Paid Game</a>
+            <a class="btn primary" href="#contact" data-service="Foundry VTT Build">Request a Foundry Build</a>
+            <a class="btn ghost" href="https://www.patreon.com/pactsandpolyhedrals?utm_campaign=creatorshare_creator" target="_blank" rel="noopener">Join the Patreon</a>
+          </div>
+          <div class="trust">
+            <div><strong>5e + VTT</strong><span>Table-ready digital play</span></div>
+            <div><strong>Custom</strong><span>Adventures, worlds, NPCs</span></div>
+            <div><strong>Fast</strong><span>Clear handoff and delivery</span></div>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Featured services">
+          <div class="card-inner">
+            <img class="hero-logo" src="assets/1000172904.png" alt="Pacts & Polyhedrals logo with slogan">
+            <div class="feature"><b>Wyvern Chess</b><p>A three-board fantasy strategy game of Sky, Land, and Underworld tactics with lessons, AI play, Pass & Play, sprite art, hints, and full move tracking.</p></div>
+            <div class="feature"><b>DM LM Pro</b><p>A GM-only Foundry VTT light manager for scene mood, token lights, ambient presets, blackout controls, memory slots, and fast map lighting changes.</p></div>
+            <div class="feature"><b>Downtime Master</b><p>A full Foundry VTT downtime system for D&D 5e with requests, crafting, training, factions, harvesting, shops, treasure, and GM review tools.</p></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="band">Finished tools and games for DMs, players, and fantasy strategy fans.</div>
+
+    <div class="wrap art-break"><img class="art-wide" src="assets/1000172906.png" alt="Pacts & Polyhedrals fantasy artwork"></div>
+
+    <section class="section" id="products">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Finished products</h2>
+          <p>Explore the released Pacts & Polyhedrals projects: a browser-playable fantasy strategy game, a Foundry VTT lighting control centre, and a complete D&D 5e downtime system.</p>
+        </div>
+        <div class="grid3">
+          <article class="service"><div class="icon">♞</div><h3>Wyvern Chess</h3><p>A fantasy strategy game played across three stacked 12x8 boards: Sky, Land, and Underworld. Learn with Grukk, play against the goblin AI, challenge a friend in Pass & Play, or use Teams Mode for table play.</p><ul class="list"><li>Lessons, Quick Match, and Warlord Mode</li><li>Dragons, griffons, clerics, basilisk freezes, eruptions, and more</li><li>Move log, captured tray, hints, and tilt/flat board views</li></ul><br><a class="btn ghost" href="https://pacts-and-polyhedrals.github.io/wyvern-chess/" target="_blank" rel="noopener">Play Wyvern Chess</a></article>
+          <article class="service"><div class="icon">💡</div><h3>DM LM Pro</h3><p>A GM-only lighting control centre for Foundry VTT. Manage scene mood, token lights, and ambient light placement from one floating, draggable panel during live play.</p><ul class="list"><li>11 scene presets with smooth fade support</li><li>Token and ambient light presets with custom slots</li><li>Install in Foundry with Setup > Add-on Modules > Install Module, then paste the manifest URL from the README.</li></ul><br><button class="btn ghost" type="button" data-readme="dmlm">Read DM LM Pro README</button></article>
+          <article class="service"><div class="icon">⏳</div><h3>Downtime Master</h3><p>A comprehensive downtime management system for D&D 5e in Foundry VTT, built to keep players engaged between sessions while giving GMs review, sync, and world-management tools.</p><ul class="list"><li>Requests, crafting, training, resources, and history</li><li>37+ factions, 90+ harvesting tables, and 799 blueprints</li><li>Install from Foundry's module search or paste the manifest URL from the README.</li></ul><br><button class="btn ghost" type="button" data-readme="downtime">Read Downtime Master README</button></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What P&P does</h2>
+          <p>A single hub for released tabletop tools and premium services: play an original strategy game, install Foundry VTT modules, book a professional game, join the Patreon, or request bespoke D&D content.</p>
+        </div>
+        <div class="grid3">
+          <article class="service"><div class="icon">🎲</div><h3>Paid D&D Games</h3><p>Book cinematic online sessions with DM Asmo through StartPlaying, from intense one-shots to ongoing character-driven campaigns.</p><ul class="list"><li>Online D&D 5e sessions</li><li>New-player friendly onboarding</li><li>Dark fantasy, heroic, strange, or custom tone</li></ul></article>
+          <article class="service"><div class="icon">⚔️</div><h3>Foundry VTT Setup</h3><p>Turn rough notes, maps, and encounters into clean, ready-to-run Foundry scenes with lighting, journals, tokens, and tactical flow.</p><ul class="list"><li>Boss fights and dungeon rooms</li><li>One-shot and campaign prep</li><li>Automation options with manual fallback</li></ul></article>
+          <article class="service"><div class="icon">📜</div><h3>Custom Adventures</h3><p>Commission lore-rich one-shots, encounters, factions, NPCs, puzzles, locations, handouts, and campaign arcs tailored to your table.</p><ul class="list"><li>Read-aloud text and DM notes</li><li>Encounter scaling</li><li>Worldbuilding and faction design</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="packages">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Commission packages</h2>
+          <p>Use these as starting points. Every project can be tailored depending on scope, deadline, assets, and level of Foundry implementation required.</p>
+        </div>
+        <div class="grid2 pkg-grid">
+          <article class="pkg">
+            <img class="pkg-img" loading="lazy" decoding="async" src="assets/encounter_polish.png" alt="Encounter Polish commission package — from $49. A single scene turned table-ready, including one encounter scene, lighting and token notes, journal and DM handoff, and a quick-delivery focus.">
+            <div class="pkg-actions">
+              <a class="btn ghost" href="#contact" data-service="Encounter Polish">Enquire</a>
+              <a class="btn gold" data-pay="Encounter Polish" href="#" style="display:none">Pay with Card</a>
+            </div>
+          </article>
+          <article class="pkg">
+            <img class="pkg-img" loading="lazy" decoding="async" src="assets/boss_fight_build.png" alt="Boss Fight Build commission package — from $99. A cinematic set-piece encounter with boss phases or tactics, terrain and hazard notes, a Foundry scene setup plan, and a run-ready handoff.">
+            <div class="pkg-actions">
+              <a class="btn primary" href="#contact" data-service="Boss Fight Build">Request Build</a>
+              <a class="btn gold" data-pay="Boss Fight Build" href="#" style="display:none">Pay with Card</a>
+            </div>
+          </article>
+          <article class="pkg">
+            <img class="pkg-img" loading="lazy" decoding="async" src="assets/one_shot_pack.png" alt="One-Shot Pack commission package — from $199. A compact adventure with a 3 to 5 scene structure, NPCs, hooks and rewards, Foundry guidance, and a professional delivery document.">
+            <div class="pkg-actions">
+              <a class="btn ghost" href="#contact" data-service="One-Shot Pack">Plan One-Shot</a>
+              <a class="btn gold" data-pay="One-Shot Pack" href="#" style="display:none">Pay with Card</a>
+            </div>
+          </article>
+          <article class="pkg">
+            <img class="pkg-img" loading="lazy" decoding="async" src="assets/custom_foundry_module.png" alt="Custom Foundry Module commission package — from $350, priced by scope. A bespoke Foundry VTT module with custom tools or GM tooling, Foundry v13 to v14 compatibility, config UI, presets and data tables, and documentation with a clean handoff.">
+            <div class="pkg-actions">
+              <a class="btn primary" href="#contact" data-service="Custom Foundry Module">Discuss Build</a>
+              <a class="btn gold" data-pay="Custom Foundry Module" href="#" style="display:none">Pay with Card</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="wrap">
+        <div class="section-head"><h2>Simple process</h2><p>No endless back-and-forth. Send the idea, confirm the scope, receive a clean, usable handoff.</p></div>
+        <div class="grid2">
+          <div class="process"><div class="num">1</div><div><h3>Send the brief</h3><p>Tell us what you need: paid game, Foundry setup, custom adventure, campaign help, or Patreon/community enquiry.</p></div></div>
+          <div class="process"><div class="num">2</div><div><h3>Agree the scope</h3><p>You receive a clear recommendation, price, timeline, and what assets or details are needed.</p></div></div>
+          <div class="process"><div class="num">3</div><div><h3>Build and refine</h3><p>P&P creates the adventure, session, or Foundry-ready structure with practical table use in mind.</p></div></div>
+          <div class="process"><div class="num">4</div><div><h3>Run the game</h3><p>You get a professional handoff designed to reduce prep, improve flow, and make the session feel special.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="tools">
+      <div class="wrap split-feature">
+        <div class="art-card"><img src="assets/1000172912.png" alt="DM Asmo fireball artwork"></div>
+        <div>
+          <span class="eyebrow">Created by DM Asmo</span>
+          <h2>Original games and GM tools.</h2>
+          <p class="lead">Pacts & Polyhedrals is the professional TTRPG service and Foundry VTT tool branch of Dracouroboros, home to <strong>Wyvern Chess</strong>, <strong>DM LM Pro</strong>, and <strong>Downtime Master</strong>.</p>
+          <div class="hero-actions"><a class="btn gold" href="about.html">Read About P&P</a><a class="btn ghost" href="#products">View Products</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="cta">
+          <div><h2>Need a game, build, or adventure this week?</h2><p>Send a quick project request through the form below. Your enquiry goes directly to Pacts & Polyhedrals for a personal reply.</p></div>
+          <a class="btn gold" href="#contact" data-service="Project Request">Start the Brief</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap contact">
+        <div class="contact-card form-card">
+          <span class="eyebrow">Private enquiry form</span>
+          <h2>Start your project</h2>
+          <p>Tell me what you want built, run, or prepared. Your message is sent directly to Pacts & Polyhedrals without displaying a public email address on the page.</p>
+
+          <form id="contactForm" class="contact-form" method="POST">
+            <input type="hidden" name="_subject" value="New Pacts & Polyhedrals Enquiry">
+            <input type="hidden" name="_template" value="box">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required>
+
+            <label for="email">Reply email</label>
+            <input id="email" name="email" type="email" placeholder="Where should I reply?" required>
+
+            <label for="service">What do you need?</label>
+            <select id="service" name="service" required>
+              <option value="General Enquiry">General enquiry</option>
+              <option value="Professional DM / Paid Game">Professional DM / paid game</option>
+              <option value="Foundry VTT Build">Foundry VTT build</option>
+              <option value="Custom Foundry Module">Custom Foundry module</option>
+              <option value="Boss Fight Build">Boss fight build</option>
+              <option value="Encounter Polish">Encounter polish</option>
+              <option value="One-Shot Pack">One-shot pack</option>
+              <option value="Campaign / Worldbuilding">Campaign / worldbuilding</option>
+              <option value="Patreon / Discord">Patreon / Discord</option>
+            </select>
+
+            <label for="timeline">Timeline</label>
+            <input id="timeline" name="timeline" type="text" placeholder="Example: this week, next session, flexible">
+
+            <label for="message">Project details</label>
+            <textarea id="message" name="message" rows="6" placeholder="System, player level, party size, deadline, Foundry version, and what you want prepared." required></textarea>
+
+            <button class="btn primary" type="submit">Send Project Request</button>
+            <p class="form-note">Your message is sent privately to Pacts &amp; Polyhedrals.</p>
+          </form>
+        </div>
+        <div class="contact-card">
+          <h2>Useful links</h2>
+          <p>Play, install, support the project, join the wider ecosystem, or book a paid table directly.</p>
+          <ul class="list">
+            <li><a href="https://pacts-and-polyhedrals.github.io/wyvern-chess/" target="_blank" rel="noopener">Play: Wyvern Chess</a></li>
+            <li>DM LM Pro manifest: https://github.com/pacts-and-polyhedrals/dm-lm-pro/releases/latest/download/module.json</li>
+            <li>Downtime Master manifest: https://github.com/pacts-and-polyhedrals/downtime-master/releases/latest/download/module.json</li>
+            <li>In Foundry, open Setup > Add-on Modules > Install Module, paste the manifest URL, then enable the module in your world.</li>
+            <li><a href="https://www.patreon.com/pactsandpolyhedrals?utm_campaign=creatorshare_creator" target="_blank" rel="noopener">Patreon: Pacts & Polyhedrals</a></li>
+            <li><a href="https://startplaying.games/gm/dmasmo" target="_blank" rel="noopener">StartPlaying: DM Asmo</a></li>
+            <li>Direct enquiries are handled through the secure form.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="readmeModal" aria-hidden="true">
+    <section class="readme-modal" role="dialog" aria-modal="true" aria-labelledby="readmeModalTitle">
+      <div class="modal-top">
+        <strong id="readmeModalTitle">Module README</strong>
+        <button class="modal-close" type="button" aria-label="Close README" data-readme-close>&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="readmeModalBody" class="readme"></div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap foot">
+      <div><strong>Pacts & Polyhedrals</strong> · A Dracouroboros subsidiary · Professional TTRPG services</div>
+      <div class="foot-links">
+        <a href="https://www.patreon.com/pactsandpolyhedrals?utm_campaign=creatorshare_creator" target="_blank" rel="noopener">Patreon</a>
+        <a href="https://startplaying.games/gm/dmasmo" target="_blank" rel="noopener">StartPlaying</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Enquiry Form</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      /* ============================================================
+         CONTACT FORM  — sends enquiries to your inbox via FormSubmit
+         The email is assembled here so it is not sitting in the page
+         source as plain text for spam bots to scrape.
+         DO NOT url-encode the @ — FormSubmit needs the literal address.
+         ============================================================ */
+      const user = 'ben.v';
+      const domain = 'imagi-nations.com';
+      const form = document.getElementById('contactForm');
+      if(form){
+        form.action = 'https://formsubmit.co/' + user + '@' + domain;
+
+        /* Nice in-page success message instead of leaving the site.
+           Submits in the background to FormSubmit's AJAX endpoint. */
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          const btn = form.querySelector('button[type="submit"]');
+          const note = form.querySelector('.form-note');
+          const originalBtn = btn ? btn.textContent : '';
+          if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+          fetch('https://formsubmit.co/ajax/' + user + '@' + domain, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+          })
+          .then(function(r){ return r.json(); })
+          .then(function(data){
+            var ok = data && (data.success === true || data.success === 'true');
+            if(ok){
+              form.reset();
+              if(note){
+                note.textContent = 'Thank you — your enquiry has been sent. I will reply by email shortly.';
+                note.style.color = 'var(--gold2)';
+              }
+              if(btn){ btn.disabled = false; btn.textContent = 'Message Sent ✓'; }
+            } else {
+              if(note){
+                note.textContent = (data && data.message) ? data.message : 'Received. One-time confirmation may be required — check the inbox.';
+                note.style.color = 'var(--gold2)';
+              }
+              if(btn){ btn.disabled = false; btn.textContent = originalBtn; }
+            }
+          })
+          .catch(function(){
+            if(note){
+              note.textContent = 'Something went wrong sending the form. Please email ' + user + '@' + domain + ' directly.';
+              note.style.color = 'var(--ember2)';
+            }
+            if(btn){ btn.disabled = false; btn.textContent = originalBtn; }
+          });
+        });
+      }
+      document.querySelectorAll('[data-service]').forEach(function(link){
+        link.addEventListener('click', function(){
+          const selected = link.getAttribute('data-service');
+          const service = document.getElementById('service');
+          const subject = document.querySelector('input[name="_subject"]');
+          if(service && selected){
+            Array.from(service.options).forEach(function(option){
+              if(option.value === selected){ service.value = selected; }
+            });
+          }
+          if(subject && selected){
+            subject.value = 'Pacts & Polyhedrals Enquiry: ' + selected;
+          }
+        });
+      });
+
+      /* ============================================================
+         STRIPE PAYMENT LINKS
+         ------------------------------------------------------------
+         1. In your Stripe Dashboard go to:  Product catalogue >
+            Payment links  (or  https://dashboard.stripe.com/payment-links )
+         2. Create one payment link per package below.
+         3. Copy each link (looks like  https://buy.stripe.com/xxxxxxxx )
+            and paste it between the quotes for the matching package.
+         4. Save & re-upload this file. The "Pay with card" buttons
+            appear automatically. Any package left blank simply shows
+            no pay button (visitors can still use the enquiry form).
+         ============================================================ */
+      const STRIPE_LINKS = {
+        "Encounter Polish": "https://buy.stripe.com/00w3cx7Xx6jl3Jug7icbC06",
+        "Boss Fight Build": "https://buy.stripe.com/dRm3cxfpZ379eo82gscbC05",
+        "One-Shot Pack":    "https://buy.stripe.com/7sYcN74Ll5fh1BmaMYcbC04",
+        "Custom Foundry Module": "https://buy.stripe.com/28EbJ3fpZ8rt5RC1cocbC03"
+      };
+
+      document.querySelectorAll('[data-pay]').forEach(function(btn){
+        const key = btn.getAttribute('data-pay');
+        const url = STRIPE_LINKS[key];
+        if(url && /^https?:\/\//.test(url)){
+          btn.href = url;
+          btn.target = '_blank';
+          btn.rel = 'noopener';
+          btn.style.display = '';
+        } else {
+          btn.style.display = 'none';
+        }
+      });
+    })();
+  </script>
+  <script src="assets/readme-modal.js"></script>
+</body>
+</html>
