@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pacts & Polyhedrals | Games, Foundry VTT Tools & Professional DM Services</title>
-  <meta name="description" content="Pacts & Polyhedrals by DM Asmo — Wyvern Chess, DM LM Pro, Downtime Master, premium online D&D games, Foundry VTT builds, custom adventures, and TTRPG support." />
-  <meta name="keywords" content="Pacts and Polyhedrals, DM Asmo, Wyvern Chess, DM LM Pro, Downtime Master, Foundry VTT modules, professional dungeon master, paid D&D games, Dungeons and Dragons, Dracouroboros" />
+  <title>Pacts & Polyhedrals | The Smoke, Original Games & Foundry VTT Tools</title>
+  <meta name="description" content="Pacts & Polyhedrals by DM Asmo — The Smoke London crime TTRPG, Wyvern Chess, DM LM Pro, Downtime Master, premium online D&D games, Foundry VTT builds, custom adventures, and TTRPG support." />
+  <meta name="keywords" content="Pacts and Polyhedrals, DM Asmo, The Smoke, London crime TTRPG, Wyvern Chess, DM LM Pro, Downtime Master, Foundry VTT modules, professional dungeon master, paid D&D games, Dungeons and Dragons, Dracouroboros" />
   <meta name="author" content="Pacts & Polyhedrals / Dracouroboros" />
   <meta property="og:title" content="Pacts & Polyhedrals | Games & Foundry VTT Tools" />
-  <meta property="og:description" content="Home of Wyvern Chess, DM LM Pro, Downtime Master, professional online D&D games, Foundry VTT builds, and TTRPG content by DM Asmo." />
+  <meta property="og:description" content="Home of The Smoke, Wyvern Chess, DM LM Pro, Downtime Master, professional online D&D games, Foundry VTT builds, and TTRPG content by DM Asmo." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://pacts-and-polyhedrals.github.io/pacts/assets/1000172904.png" />
   <meta name="theme-color" content="#d21f3c" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -182,6 +183,24 @@
     .readme-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
     @media(max-width:920px){.hero-grid,.grid3,.grid2,.contact,.cta,.split-feature{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:14px}.links{display:none}.trust{grid-template-columns:1fr}.hero{padding-top:64px}.cta{padding:28px}.nav-inner{height:70px}}
     @media(max-width:560px){.wrap{width:min(100% - 24px,var(--max))}.hero-actions .btn,.cta .btn{width:100%}.brand strong{font-size:15px}.sigil{width:40px;height:40px}.service,.price,.process,.testimonial,.contact-card{padding:20px}h1{font-size:42px}}
+
+    /* Pacts & Polyhedrals: original games and tools product grid */
+    .product-grid{align-items:stretch}
+    .product-grid > .service{display:flex;flex-direction:column;min-width:0}
+    .product-grid .list{margin-bottom:24px}
+    .product-grid .product-cta{align-self:flex-start;margin-top:auto}
+    .product-grid .product-cta:focus-visible,.smoke-brand-card:focus-visible{outline:3px solid var(--gold2);outline-offset:4px}
+    .smoke-product{border-color:rgba(120,221,210,.36);background:linear-gradient(150deg,rgba(25,61,63,.34),rgba(255,255,255,.035) 72%)}
+    .smoke-product:hover{border-color:rgba(120,221,210,.72)}
+    .smoke-product .list li::before{color:#78ddd2}
+    .smoke-brand-card{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-height:215px;padding:21px 22px;margin-bottom:22px;border:1px solid rgba(120,221,210,.32);border-radius:20px;overflow:hidden;background:radial-gradient(circle at 83% 0%,rgba(120,221,210,.16),transparent 53%),linear-gradient(140deg,#07151a,#11252a 64%,#14212b)}
+    .smoke-brand-card::before{content:"";position:absolute;z-index:-1;inset:-35px;background:repeating-linear-gradient(45deg,transparent 0 42px,rgba(120,221,210,.075) 43px 45px,transparent 46px 88px),repeating-linear-gradient(-45deg,transparent 0 59px,rgba(255,255,255,.035) 60px 62px,transparent 63px 118px);opacity:.8;transform:rotate(-8deg)}
+    .smoke-brand-card img{position:relative;display:block;align-self:center;width:min(100%,435px);height:auto;max-height:135px;object-fit:contain;filter:drop-shadow(0 8px 18px rgba(0,0,0,.32))}
+    .smoke-label,.smoke-caption{position:relative;font-family:Inter,system-ui,sans-serif;font-size:10px;font-weight:900;letter-spacing:.15em;line-height:1.4;text-transform:uppercase;color:#78ddd2}
+    .smoke-caption{color:#b1cac9;text-align:right}
+    .smoke-product .product-cta{border-color:rgba(120,221,210,.55);background:rgba(120,221,210,.12)}
+    .smoke-product .product-cta:hover{border-color:#78ddd2;background:rgba(120,221,210,.19)}
+    @media(max-width:560px){.smoke-brand-card{min-height:180px;padding:17px 16px}.smoke-brand-card img{max-height:118px}.product-grid .product-cta{width:100%;align-self:stretch}}
   </style>
 </head>
 <body>
@@ -224,6 +243,7 @@
         <aside class="hero-card" aria-label="Featured services">
           <div class="card-inner">
             <img class="hero-logo" src="assets/1000172904.png" alt="Pacts & Polyhedrals logo with slogan">
+            <div class="feature"><b>The Smoke</b><p>A living London crime sandbox of 12 rival factions, 125 jobs, interconnected streets, and consequences that follow your crew.</p></div>
             <div class="feature"><b>Wyvern Chess</b><p>A three-board fantasy strategy game of Sky, Land, and Underworld tactics with lessons, AI play, Pass & Play, sprite art, hints, and full move tracking.</p></div>
             <div class="feature"><b>DM LM Pro</b><p>A GM-only Foundry VTT light manager for scene mood, token lights, ambient presets, blackout controls, memory slots, and fast map lighting changes.</p></div>
             <div class="feature"><b>Downtime Master</b><p>A full Foundry VTT downtime system for D&D 5e with requests, crafting, training, factions, harvesting, shops, treasure, and GM review tools.</p></div>
@@ -262,13 +282,61 @@
     <section class="section" id="products">
       <div class="wrap">
         <div class="section-head">
-          <h2>Finished products</h2>
-          <p>Explore the released Pacts & Polyhedrals projects: a browser-playable fantasy strategy game, a Foundry VTT lighting control centre, and a complete D&D 5e downtime system.</p>
+          <h2>Original games &amp; GM tools</h2>
+          <p>Discover our original tabletop and browser games alongside GM-ready Foundry VTT tools. Explore the city of The Smoke, play Wyvern Chess, or equip your next campaign.</p>
         </div>
-        <div class="grid3">
-          <article class="service"><div class="icon">♞</div><h3>Wyvern Chess</h3><p>A fantasy strategy game played across three stacked 12x8 boards: Sky, Land, and Underworld. Learn with Grukk, play against the goblin AI, challenge a friend in Pass & Play, or use Teams Mode for table play.</p><ul class="list"><li>Lessons, Quick Match, and Warlord Mode</li><li>Dragons, griffons, clerics, basilisk freezes, eruptions, and more</li><li>Move log, captured tray, hints, and tilt/flat board views</li></ul><br><a class="btn ghost" href="https://pacts-and-polyhedrals.github.io/wyvern-chess/" target="_blank" rel="noopener">Play Wyvern Chess</a></article>
-          <article class="service"><div class="icon">💡</div><h3>DM LM Pro</h3><p>A GM-only lighting control centre for Foundry VTT. Manage scene mood, token lights, and ambient light placement from one floating, draggable panel during live play.</p><ul class="list"><li>11 scene presets with smooth fade support</li><li>Token and ambient light presets with custom slots</li><li>Install in Foundry with Setup > Add-on Modules > Install Module, then paste the manifest URL from the README.</li></ul><br><button class="btn ghost" type="button" data-readme="dmlm">Read DM LM Pro README</button></article>
-          <article class="service"><div class="icon">⏳</div><h3>Downtime Master</h3><p>A comprehensive downtime management system for D&D 5e in Foundry VTT, built to keep players engaged between sessions while giving GMs review, sync, and world-management tools.</p><ul class="list"><li>Requests, crafting, training, resources, and history</li><li>37+ factions, 90+ harvesting tables, and 799 blueprints</li><li>Install from Foundry's module search or paste the manifest URL from the README.</li></ul><br><button class="btn ghost" type="button" data-readme="downtime">Read Downtime Master README</button></article>
+        <div class="grid2 product-grid">
+          <article class="service smoke-product">
+            <a class="smoke-brand-card" href="https://pacts-and-polyhedrals.github.io/the-smoke-web/" target="_blank" rel="noopener noreferrer" aria-label="Visit the official The Smoke game website">
+              <span class="smoke-label">Original tabletop roleplaying game</span>
+              <img src="assets/the-smoke/brand-horizontal.svg" alt="The Smoke — a Pacts &amp; Polyhedrals game" loading="lazy" width="1580" height="442">
+              <span class="smoke-caption">London · Crime · Consequences ↗</span>
+            </a>
+            <h3>The Smoke</h3>
+            <p>A grounded, open-world crime TTRPG set in London. Take on risky jobs, build street reputation, navigate rival factions, and decide who to trust as police pressure rises.</p>
+            <ul class="list">
+              <li>125 missions and 12 competing factions</li>
+              <li>20 connected London street maps, vehicles, and police Heat</li>
+              <li>Player rules, city atlas, and Foundry VTT resources</li>
+            </ul>
+            <a class="btn ghost product-cta" href="https://pacts-and-polyhedrals.github.io/the-smoke-web/" target="_blank" rel="noopener noreferrer">Explore The Smoke ↗</a>
+          </article>
+
+          <article class="service">
+            <div class="icon">♞</div>
+            <h3>Wyvern Chess</h3>
+            <p>A fantasy strategy game played across three stacked 12x8 boards: Sky, Land, and Underworld. Learn with Grukk, play against the goblin AI, challenge a friend in Pass &amp; Play, or use Teams Mode for table play.</p>
+            <ul class="list">
+              <li>Lessons, Quick Match, and Warlord Mode</li>
+              <li>Dragons, griffons, clerics, basilisk freezes, eruptions, and more</li>
+              <li>Move log, captured tray, hints, and tilt/flat board views</li>
+            </ul>
+            <a class="btn ghost product-cta" href="https://pacts-and-polyhedrals.github.io/wyvern-chess/" target="_blank" rel="noopener noreferrer">Play Wyvern Chess</a>
+          </article>
+
+          <article class="service">
+            <div class="icon">💡</div>
+            <h3>DM LM Pro</h3>
+            <p>A GM-only lighting control centre for Foundry VTT. Manage scene mood, token lights, and ambient light placement from one floating, draggable panel during live play.</p>
+            <ul class="list">
+              <li>11 scene presets with smooth fade support</li>
+              <li>Token and ambient light presets with custom slots</li>
+              <li>Install in Foundry with Setup &gt; Add-on Modules &gt; Install Module, then paste the manifest URL from the README.</li>
+            </ul>
+            <button class="btn ghost product-cta" type="button" data-readme="dmlm">Read DM LM Pro README</button>
+          </article>
+
+          <article class="service">
+            <div class="icon">⏳</div>
+            <h3>Downtime Master</h3>
+            <p>A comprehensive downtime management system for D&amp;D 5e in Foundry VTT, built to keep players engaged between sessions while giving GMs review, sync, and world-management tools.</p>
+            <ul class="list">
+              <li>Requests, crafting, training, resources, and history</li>
+              <li>37+ factions, 90+ harvesting tables, and 799 blueprints</li>
+              <li>Install from Foundry's module search or paste the manifest URL from the README.</li>
+            </ul>
+            <button class="btn ghost product-cta" type="button" data-readme="downtime">Read Downtime Master README</button>
+          </article>
         </div>
       </div>
     </section>
@@ -321,7 +389,7 @@
         <div>
           <span class="eyebrow">Created by DM Asmo</span>
           <h2>Original games and GM tools.</h2>
-          <p class="lead">Pacts & Polyhedrals is the professional TTRPG service and Foundry VTT tool branch of Dracouroboros, home to <strong>Wyvern Chess</strong>, <strong>DM LM Pro</strong>, and <strong>Downtime Master</strong>.</p>
+          <p class="lead">Pacts & Polyhedrals is the professional TTRPG service and Foundry VTT tool branch of Dracouroboros, home to <strong>The Smoke</strong>, <strong>Wyvern Chess</strong>, <strong>DM LM Pro</strong>, and <strong>Downtime Master</strong>.</p>
           <div class="hero-actions"><a class="btn gold" href="about.html">Read About P&P</a><a class="btn ghost" href="#products">View Products</a></div>
         </div>
       </div>
@@ -384,6 +452,7 @@
           <h2>Useful links</h2>
           <p>Play, install, support the project, join the wider ecosystem, or book a paid table directly.</p>
           <ul class="list">
+            <li><a href="https://pacts-and-polyhedrals.github.io/the-smoke-web/" target="_blank" rel="noopener noreferrer">Explore: The Smoke</a></li>
             <li><a href="https://pacts-and-polyhedrals.github.io/wyvern-chess/" target="_blank" rel="noopener">Play: Wyvern Chess</a></li>
             <li>DM LM Pro manifest: https://github.com/pacts-and-polyhedrals/dm-lm-pro/releases/latest/download/module.json</li>
             <li>Downtime Master manifest: https://github.com/pacts-and-polyhedrals/downtime-master/releases/latest/download/module.json</li>
@@ -449,6 +518,7 @@
         <a href="https://www.patreon.com/pactsandpolyhedrals?utm_campaign=creatorshare_creator" target="_blank" rel="noopener">Patreon</a>
         <a href="https://startplaying.games/gm/dmasmo" target="_blank" rel="noopener">StartPlaying</a>
         <a href="#products">Products</a>
+        <a href="https://pacts-and-polyhedrals.github.io/the-smoke-web/" target="_blank" rel="noopener noreferrer">The Smoke</a>
         <a href="#contact">Enquiry Form</a>
         <a href="about.html">About</a>
       </div>
