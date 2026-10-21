@@ -3,6 +3,7 @@
 (() => {
 'use strict';
 const apiBase=String(window.PACTS_STORE_API||'').trim().replace(/\/$/,'');
+const comingSoon=window.PACTS_STORE_COMING_SOON===true;
 const $=(s,root=document)=>root.querySelector(s);
 const $$=(s,root=document)=>[...root.querySelectorAll(s)];
 const session=()=>sessionStorage.getItem('pacts_session')||'';
@@ -48,6 +49,7 @@ async function verifyMagicLink(){
 async function setupProduct(){
   const panel=$('[data-checkout-status]'),button=$('[data-start-checkout]');
   if(!button)return;
+  const showComingSoon=()=>{button.textContent='COMING SOON — FOUNDERS BETA $5';button.disabled=true;setStatus(panel,'Public sales have not opened. The first 100 Founders will be offered $5 beta access when the game is ready. No payment can be taken now.');};
   const proceed=async()=>{
     button.disabled=true;setStatus(panel,'Opening Stripe Checkout…');
     try{const payment=await call('/v1/checkout',{method:'POST',body:{product_id:'the-smoke',beta_ack:true,terms_ack:true}});
@@ -60,7 +62,7 @@ async function setupProduct(){
     if(!session()){$('[data-login-anchor]')?.scrollIntoView({behavior:'smooth'});setStatus(panel,'Please sign in with your purchase email first.',true);return;}
     await proceed();
   });
-  if(!apiBase){button.disabled=true;setStatus(panel,'Checkout is being configured. No payments can be taken yet.');return;}
+  if(!apiBase){if(comingSoon)showComingSoon();else{button.disabled=true;setStatus(panel,'Checkout is being configured. No payments can be taken yet.');}return;}
   try{
     const data=await call('/v1/catalog');const p=data.products?.find(x=>x.id==='the-smoke');
     if(!p)throw new Error('Product not found');
@@ -87,10 +89,11 @@ async function setupProduct(){
     if(p.stage==='founders')button.textContent='PURCHASE FOUNDERS BETA — $5';
     if(p.stage==='early')button.textContent='PURCHASE EARLY ACCESS — $15';
     if(p.stage==='full')button.textContent='PURCHASE / UPGRADE — SEE LIBRARY';
+    if(comingSoon){showComingSoon();return;}
     if(!p.checkout_enabled||p.stage==='paused'||(p.stage==='founders'&&p.checkout_places_available<=0)){
       button.disabled=true;setStatus(panel,p.stage==='founders'&&p.checkout_places_available===0?'All current founder checkout places are reserved or sold. Please check back.':'Checkout is not activated yet. No payment can be taken.');
     }else setStatus(panel,'Sign in with your purchase email, then use Stripe Checkout securely.');
-  }catch(err){button.disabled=true;setStatus(panel,err.message,true);}
+  }catch(err){if(comingSoon)showComingSoon();else{button.disabled=true;setStatus(panel,err.message,true);}}
 }
 const container=(target,title)=>{const card=make('section','card');card.append(make('h3','',title));target.append(card);return card;};
 function renderListOfOrders(card,orders){
